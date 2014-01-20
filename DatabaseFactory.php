@@ -2,12 +2,19 @@
 
 require_once("base.php");
 
-class DatabaseFactory {
+class DatabaseFactory 
+{
+    private static $database = false;
 
     public static public function getDatabase()
     {
-        $DataBase = new MySqlBase();
-        return $DataBase;
+        if($database == false)
+        {
+            self::$database = true;
+            $DataBase = new MySqlBase();
+            return $DataBase;
+        }
     }    
 }
+
 ?>
