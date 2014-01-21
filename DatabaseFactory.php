@@ -2,7 +2,7 @@
 
 require_once("base.php");
 
-class DatabaseFactory 
+class DatabaseFactory
 {
     private static $database = null;
 
@@ -13,7 +13,7 @@ class DatabaseFactory
             $database = new MySqlBase();
         }
         return $database;
-    }    
+    }
 }
 
 ?>
