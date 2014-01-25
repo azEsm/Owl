@@ -7,9 +7,6 @@ class MySqlBase {
   public static $admin_contact = "v.kirill.01@gmail.com"; // Administrator e-mail
   public static $def_email = "v.kirill.01@gmail.com";
   public static $base_dir = 'test'; // Directory of site
-  public $dbcnx;
-  public $query;
-  public $sql_query;
 
 function __construct()
 {

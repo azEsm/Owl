@@ -7,6 +7,8 @@ require_once("controller.php");
 <head></head>
 <body>
 
+<a href="signin.php" target="_self">Sign In</a><br><br>
+
 <?php
 
 if (isset($_SESSION['added']) and isset($_SESSION['name']))
