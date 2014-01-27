@@ -10,14 +10,14 @@ $base = DatabaseFactory::getDatabase();
 	$_SESSION['show']=1;
   }
 
-/* Для добавление записи, на всякий */
+/* For Deleting of message just in case */
   elseif (isset($_POST['add']))
   {
 		$_SESSION['add']=1;	  
   }
-/* Конец для добавления записи  */
+/* End of For deleting of message  */
 
-/* Добавление записи */
+/* Adding of message */
   elseif (isset($_POST['send']))
   {
         $base->addMessage($_POST['name'], $_POST['subject'], $_POST['message']);
@@ -27,18 +27,18 @@ $base = DatabaseFactory::getDatabase();
 
 	header('Location: ' . "index.php");  
   }
-/* Конец добавления записи  */
+/* End of Adding of message  */
 
-/* Данные для формы редактирования */
+/* Data for Edit form */
   elseif (isset($_POST['edit']))
   {
 	$messages = $base->getById($_POST['id']);
 
 	$_SESSION['doedit']=1;
   }
-/* Конец данных для формы редактирования */
+/* End of Data for Edit form */
 
-/* Редактирование */  
+/* Editing */  
   elseif (isset($_POST['update']))
   {
         $base->updateMessage($_POST['id'], $_POST['subject'], $_POST['message']);
@@ -48,9 +48,9 @@ $base = DatabaseFactory::getDatabase();
 
 	header('Location: ' . "index.php");
   }
-/* Конец редактирования */
+/* End of Editing */
 
-/* Удаление записи */
+/* Deleting of message */
   elseif (isset($_POST['delete']))
   {
         $messages = $base->getById($_POST['id']);
@@ -63,25 +63,25 @@ $base = DatabaseFactory::getDatabase();
 
 	header('Location: ' . "index.php");
   }
-/* Конец удаления записи */
+/* End of Deleting of message */
 
-/* Добавление пользователя */
+/* Adding of user */
 
   elseif (isset($_POST['register']))
   {
       $base->addUser($_POST['name'], md5(md5($_POST['pass'])));
       $_SESSION['registered'] = 1;
-      $_SESSION['rname'] = $_POST['name'];
+      $_SESSION['name'] = $_POST['name'];
       header('Location: ' . "index.php");
   }
 
-/* Конец добавления пользователя */
+/* End of Adding of user */
 
-/* Данные для формы отображения */
+/* Data for messages list */
   else
   {
     $mess = $base->getList();
   }
-/* Конец данных для формы отображения */
+/* End of Data for messages list */
 
 ?>

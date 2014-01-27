@@ -29,7 +29,7 @@ public function showError($err_header, $err_message)
   exit();
 }
 
-/* Функция добавления записи */
+/* Add Message function */
 
 public function addMessage($name, $subject, $message)
 {
@@ -38,9 +38,9 @@ public function addMessage($name, $subject, $message)
     if(!$query) $this->showError("(MySQL) #".mysql_errno(), '<div>'.$sql_query.'</div>'.mysql_error());
 }
 
-/* Конец функции для добавления записи */
+/* End of Add Message function */
 
-/* Функция редактирования */
+/* Edit Message function */
 
 public function updateMessage($id, $subject, $message)
 {
@@ -49,9 +49,9 @@ public function updateMessage($id, $subject, $message)
     if(!$query) $this->showError("(MySQL) #".mysql_errno(), '<div>'.$sql_query.'</div>'.mysql_error());
 }
 
-/* Конец функции редактирования */
+/* End of Edit Message function */
 
-/* Функция выбора сообщения по ID */
+/* Get Message by ID function */
 
 public function getById($id)
 {
@@ -65,9 +65,9 @@ public function getById($id)
     return $mess;
 }
 
-/* Конец функции выбора сообщения по ID */
+/* End of Get Message by ID function */
 
-/* Функция удаления записи */
+/* Delete Message function */
 
 public function delete($id)
 {
@@ -76,9 +76,9 @@ public function delete($id)
     if(!$query) $this->showError("(MySQL) #".mysql_errno(), '<div>'.$sql_query.'</div>'.mysql_error());
 }
 
-/* Конец функции удаления записи */
+/* End of Delete Message function */
 
-/* Функция списка сообщений */
+/* Messages List function */
 
 public function getList() 
 {
@@ -97,9 +97,9 @@ public function getList()
     }
     return $mess;
 }
-/* Конец функции списка сообщений */
+/* End of Messages List function */
 
-/* Функция добавления пользователя */
+/* Add User function */
 
 public function addUser($name, $pass)
 {
@@ -108,7 +108,7 @@ public function addUser($name, $pass)
     if(!$query) $this->showError("(MySQL) #".mysql_errno(), '<div>'.$sql_query.'</div>'.mysql_error());
 }
 
-/* Конец функции добавления пользователя */
+/* End of Add User function */
 
 }
 ?>

@@ -30,11 +30,11 @@ elseif (isset($_SESSION['delete']) and isset($_SESSION['name']))
   unset($_SESSION['name']);
 }
 
-elseif(isset($_SESSION['registered']) and isset($_SESSION['rname']))
+elseif(isset($_SESSION['registered']) and isset($_SESSION['name']))
 {
-  echo '<font color="red"><b>'.$_SESSION['rname'].'</b>, you are successfully registered. Now you can Sign In.</font>';
+  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, you are successfully registered. Now you can Sign In.</font>';
   unset($_SESSION['registered']);
-  unset($_SESSION['rname']);
+  unset($_SESSION['name']);
 }
 
 ?>
