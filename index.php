@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require_once("controller.php");
 ?>
@@ -33,7 +33,7 @@ elseif (isset($_SESSION['delete']) and isset($_SESSION['name']))
 ?>
 
 <form action="edit.php" method="post">
-  <input type="submit" name="add" value="Add message" />
+<input type="submit" name="add" value="Add message" />
 </form>
 
 <h2>Messages</h2><hr>

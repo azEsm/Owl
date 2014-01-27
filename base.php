@@ -1,22 +1,20 @@
 <?php
 
-require_once("config.php");
+require_once("readprop.php");
 
 class MySqlBase {
   
   public static $admin_contact = "v.kirill.01@gmail.com"; // Administrator e-mail
   public static $def_email = "v.kirill.01@gmail.com";
   public static $base_dir = 'test'; // Directory of site
-  public $dbcnx;
-  public $query;
-  public $sql_query;
 
 function __construct()
 {
-  $dbcnx = @mysql_connect(BaseConfig::$dblocation,BaseConfig::$dbuser,BaseConfig::$dbpasswd);
+  $BaseConfig = readprop("config.properties");
+  $dbcnx = @mysql_connect($BaseConfig['dblocation'],$BaseConfig['dbuser'],$BaseConfig['dbpasswd']);
 
   if (!$dbcnx) $this->showError( "(MySQL) #".mysql_errno(), mysql_error());
-  if (! @mysql_select_db(BaseConfig::$dbname,$dbcnx) ) $this->showError( "(MySQL) #".mysql_errno(), mysql_error() );
+  if (! @mysql_select_db($BaseConfig['dbname'],$dbcnx) ) $this->showError( "(MySQL) #".mysql_errno(), mysql_error() );
 
   $query = "SET CHARACTER SET utf8";
   $prev = mysql_query($query);
