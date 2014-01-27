@@ -2,7 +2,8 @@
 
 require_once("readprop.php");
 
-class MySqlBase {
+class MySqlBase 
+{
   
   public static $admin_contact = "v.kirill.01@gmail.com"; // Administrator e-mail
   public static $def_email = "v.kirill.01@gmail.com";
@@ -79,7 +80,8 @@ public function delete($id)
 
 /* Функция списка сообщений */
 
-public function getList() {
+public function getList() 
+{
     $mess = array();
     $sql_query = "SELECT id, name, subject FROM `messages` ORDER BY ID DESC" ;
     $query = mysql_query($sql_query);
@@ -96,5 +98,17 @@ public function getList() {
     return $mess;
 }
 /* Конец функции списка сообщений */
+
+/* Функция добавления пользователя */
+
+public function addUser($name, $pass)
+{
+    $sql_query = "INSERT INTO `users` ( `name` , `pass` ) VALUES ( '".$name."', '".$pass."' );";
+    $query = mysql_query($sql_query);
+    if(!$query) $this->showError("(MySQL) #".mysql_errno(), '<div>'.$sql_query.'</div>'.mysql_error());
+}
+
+/* Конец функции добавления пользователя */
+
 }
 ?>

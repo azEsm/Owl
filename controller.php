@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once("DatabaseFactory.php");
 
 $base = DatabaseFactory::getDatabase();
@@ -18,7 +18,7 @@ $base = DatabaseFactory::getDatabase();
 /* Конец для добавления записи  */
 
 /* Добавление записи */
-  if (isset($_POST['send']))
+  elseif (isset($_POST['send']))
   {
         $base->addMessage($_POST['name'], $_POST['subject'], $_POST['message']);
 
@@ -65,7 +65,17 @@ $base = DatabaseFactory::getDatabase();
   }
 /* Конец удаления записи */
 
+/* Добавление пользователя */
 
+  elseif (isset($_POST['register']))
+  {
+      $base->addUser($_POST['name'], md5(md5($_POST['pass'])));
+      $_SESSION['registered'] = 1;
+      $_SESSION['rname'] = $_POST['name'];
+      header('Location: ' . "index.php");
+  }
+
+/* Конец добавления пользователя */
 
 /* Данные для формы отображения */
   else

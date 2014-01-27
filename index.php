@@ -7,8 +7,6 @@ require_once("controller.php");
 <head></head>
 <body>
 
-<a href="signin.php" target="_self">Sign In</a><br><br>
-
 <?php
 
 if (isset($_SESSION['added']) and isset($_SESSION['name']))
@@ -32,7 +30,16 @@ elseif (isset($_SESSION['delete']) and isset($_SESSION['name']))
   unset($_SESSION['name']);
 }
 
+elseif(isset($_SESSION['registered']) and isset($_SESSION['rname']))
+{
+  echo '<font color="red"><b>'.$_SESSION['rname'].'</b>, you are successfully registered. Now you can Sign In.</font>';
+  unset($_SESSION['registered']);
+  unset($_SESSION['rname']);
+}
+
 ?>
+
+<br><a href="signin.php" target="_self">Sign In</a><br><br>
 
 <form action="edit.php" method="post">
 <input type="submit" name="add" value="Add message" />
