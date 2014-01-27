@@ -114,5 +114,26 @@ public function addUser($name, $pass)
 
 /* End of Add User function */
 
+/* Check User function */
+
+public function checkUser($name, $pass)
+{
+    $sql_query = "SELECT pass FROM `users` WHERE `name`='".$name."'";
+    $query = mysql_query($sql_query);
+    if(!$query) $this->showError("(MySQL) #".mysql_errno(), '<div>'.$sql_query.'</div>'.mysql_error());
+    $users = mysql_fetch_array($query);
+    
+    if ($pass == $users['pass'])
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+/* End of Check User function */
+
 }
 ?>

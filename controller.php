@@ -66,7 +66,6 @@ $base = DatabaseFactory::getDatabase();
 /* End of Deleting of message */
 
 /* Adding of user */
-
   elseif (isset($_POST['register']))
   {
       $base->addUser($_POST['name'], md5(md5($_POST['pass'])));
@@ -74,8 +73,26 @@ $base = DatabaseFactory::getDatabase();
       $_SESSION['name'] = $_POST['name'];
       header('Location: ' . "index.php");
   }
-
 /* End of Adding of user */
+
+/*  */
+  elseif (isset($_POST['signin']))
+  {
+      $check = $base->checkUser($_POST['name'], md5(md5($_POST['pass'])));
+      if ($check == true)
+      {
+          $_SESSION['signin'] = 1;
+          $_SESSION['name'] = $_POST['name'];
+          header('Location: ' . "index.php"); 
+      }
+      else
+      {
+          $_SESSION['signin'] = 1;
+          $_SESSION['name'] = "ЗАЛУПА!";
+          header('Location: ' . "index.php");
+      }
+  }
+/*  */ 
 
 /* Data for messages list */
   else

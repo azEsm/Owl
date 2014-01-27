@@ -37,6 +37,11 @@ elseif(isset($_SESSION['registered']) and isset($_SESSION['name']))
   unset($_SESSION['name']);
 }
 
+elseif(isset($_SESSION['signin']) and isset($_SESSION['name']))
+{
+  echo '<font color="red">Hello, <b>'.$_SESSION['name'].'</b>. Nice to meet you!</font>';
+}
+
 ?>
 
 <br><a href="signin.php" target="_self">Sign In</a><br><br>
