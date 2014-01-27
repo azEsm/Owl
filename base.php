@@ -5,9 +5,11 @@ require_once("readprop.php");
 class MySqlBase 
 {
   
-  public static $admin_contact = "v.kirill.01@gmail.com"; // Administrator e-mail
-  public static $def_email = "v.kirill.01@gmail.com";
+  public static $admin_contact = "test@test.te"; // Administrator e-mail
+  public static $def_email = "test@test.te";
   public static $base_dir = 'test'; // Directory of site
+
+/* Connecting to database */
 
 function __construct()
 {
@@ -20,6 +22,8 @@ function __construct()
   $query = "SET CHARACTER SET utf8";
   $prev = mysql_query($query);
 }
+
+/* End of Connecting to database */
 
 public function showError($err_header, $err_message)
 {
