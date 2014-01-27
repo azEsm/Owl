@@ -44,7 +44,7 @@ Subject: <select name="subject">
 </select><br />
 
 Mesage: <textarea rows="5" cols="25" name="message" />
-<?php echo $messages['message']; ?>
+<?php echo trim($messages['message']); ?>
 </textarea><br />
 
 <input type="submit" value="send" />
