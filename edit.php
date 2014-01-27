@@ -10,7 +10,7 @@ Name: <input type="text" name="name" /><br />
 
 <input type="hidden" name="send" >
 
-<?php  
+<?php
 }
 /* Конец формы для добавления записи */
 
@@ -43,9 +43,9 @@ Subject: <select name="subject">
 <option>Acceptance</option>
 </select><br />
 
-  Mesage: <textarea rows="5" cols="25" name="message" />
-            <?php echo $messages['message']; ?>
-          </textarea><br />
+Mesage: <textarea rows="5" cols="25" name="message" />
+<?php echo $messages['message']; ?>
+</textarea><br />
 
 <input type="submit" value="send" />
 </form>
