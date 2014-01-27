@@ -96,7 +96,7 @@ public function getList()
         while($messages = mysql_fetch_array($query))
         {
           $mess[$messages['id']] = 
-          array("id"=>$messages['id'], "name" => $messages['name'], "subject" => $messages['subject']/*, "message" => $messages['message']*/);          
+          array("id"=>$messages['id'], "name" => $messages['name'], "subject" => $messages['subject']);          
         }
     }
     return $mess;
