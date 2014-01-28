@@ -83,7 +83,7 @@ $base = DatabaseFactory::getDatabase();
       {
           $_SESSION['signinerror'] = "you should register before sign in.";
           $_SESSION['name'] = $_POST['name'];
-          header('Location: ' . "index.php"); 
+          header('Location: ' . "signin.php"); 
       }
       elseif ($check == 2)
       {
@@ -95,7 +95,7 @@ $base = DatabaseFactory::getDatabase();
       {
           $_SESSION['signinerror'] = "you entered incorrect password. Try again.";
           $_SESSION['name'] = $_POST['name'];
-          header('Location: ' . "index.php");
+          header('Location: ' . "signin.php");
       }
   }
 /* End of Users check */ 

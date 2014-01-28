@@ -11,48 +11,48 @@ require_once("controller.php");
 
 if (isset($_SESSION['added']) and isset($_SESSION['name']))
 {
-  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, your message has been successfully added. Be happy!</font>';
+  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, your message has been successfully added. Be happy!</font><br>';
   unset($_SESSION['add']);
   unset($_SESSION['name']);
 }
 
 elseif (isset($_SESSION['edit']) and isset($_SESSION['name']))
 {
-  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, your message has been successfully edited. Be happy!</font>';
+  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, your message has been successfully edited. Be happy!</font><br>';
   unset($_SESSION['edit']);
   unset($_SESSION['name']);
 }
 
 elseif (isset($_SESSION['delete']) and isset($_SESSION['name']))
 {
-  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, your message has been successfully deleted. Be happy!</font>';
+  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, your message has been successfully deleted. Be happy!</font><br>';
   unset($_SESSION['delete']);
   unset($_SESSION['name']);
 }
 
 elseif(isset($_SESSION['registered']) and isset($_SESSION['name']))
 {
-  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, you are successfully registered. Now you can Sign In.</font>';
+  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, you are successfully registered. Now you can Sign In.</font><br>';
   unset($_SESSION['registered']);
   unset($_SESSION['name']);
 }
 
 elseif(isset($_SESSION['signin']) and isset($_SESSION['name']))
 {
-  echo '<font color="red">Hello, <b>'.$_SESSION['name'].'</b>! Nice to meet you!</font>';
+  echo '<font color="red">Hello, <b>'.$_SESSION['name'].'</b>! Nice to meet you!</font><br>';
   unset($_SESSION['signin']);
 }
 
 elseif(isset($_SESSION['signinerror']) and isset($_SESSION['name']))
 {
-  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, '.$_SESSION['signinerror'].'</font>';
+  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, '.$_SESSION['signinerror'].'</font><br>';
   unset($_SESSION['signinerror']);
   unset($_SESSION['name']);
 }
 
 ?>
 
-<br><a href="signin.php" target="_self">Sign In</a><br><br>
+<a href="signin.php" target="_self">Sign In</a><br><br>
 
 <form action="edit.php" method="post">
 <input type="submit" name="add" value="Add message" />
