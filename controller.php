@@ -76,6 +76,12 @@ $base = DatabaseFactory::getDatabase();
           $_SESSION['name'] = $_POST['name'];
           header('Location: ' . "index.php");
       }
+      elseif($check == 2)
+      {
+          $_SESSION['registrationerror'] = "you name is too short. It should be more than 3 signs.";
+          $_SESSION['name'] = "Hey, Guy";
+          header('Location: ' . "signin.php");
+      }     
       else
       {
           $_SESSION['registrationerror'] = "this name is already in use";

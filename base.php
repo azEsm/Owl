@@ -114,7 +114,13 @@ public function addUser($name, $pass)
     $user = mysql_fetch_array($query_check);
     $result = 0;
 
-    if ($user == "")
+    if (strlen($name) < '4') 
+    {
+    
+        $result = 2;
+    }
+
+    elseif ($user == "")
     {    
         $sql_query = "INSERT INTO `users` ( `name` , `pass` ) VALUES ( '".$name."', '".$pass."' );";
         $query = mysql_query($sql_query);
