@@ -75,7 +75,7 @@ $base = DatabaseFactory::getDatabase();
   }
 /* End of Adding of user */
 
-/*  */
+/* Users check */
   elseif (isset($_POST['signin']))
   {
       $check = $base->checkUser($_POST['name'], md5(md5($_POST['pass'])));
@@ -92,7 +92,7 @@ $base = DatabaseFactory::getDatabase();
           header('Location: ' . "index.php");
       }
   }
-/*  */ 
+/* End of Users check */ 
 
 /* Data for messages list */
   else
