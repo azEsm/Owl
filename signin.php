@@ -10,7 +10,7 @@
 if(isset($_SESSION['registrationerror']) and isset($_SESSION['name']))
 {
   echo '<font color="red"><b>'.$_SESSION['name'].'</b>, '.$_SESSION['registrationerror'].'</font><br>';
-  unset($_SESSION['signinerror']);
+  unset($_SESSION['registrationerror']);
   unset($_SESSION['name']);
 }
 
