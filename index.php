@@ -40,6 +40,14 @@ elseif(isset($_SESSION['registered']) and isset($_SESSION['name']))
 elseif(isset($_SESSION['signin']) and isset($_SESSION['name']))
 {
   echo '<font color="red">Hello, <b>'.$_SESSION['name'].'</b>! Nice to meet you!</font>';
+  unset($_SESSION['signin']);
+}
+
+elseif(isset($_SESSION['signinerror']) and isset($_SESSION['name']))
+{
+  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, '.$_SESSION['signinerror'].'</font>';
+  unset($_SESSION['signinerror']);
+  unset($_SESSION['name']);
 }
 
 ?>

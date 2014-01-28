@@ -79,7 +79,13 @@ $base = DatabaseFactory::getDatabase();
   elseif (isset($_POST['signin']))
   {
       $check = $base->checkUser($_POST['name'], md5(md5($_POST['pass'])));
-      if ($check == true)
+      if ($check == 1)
+      {
+          $_SESSION['signinerror'] = "you should register before sign in.";
+          $_SESSION['name'] = $_POST['name'];
+          header('Location: ' . "index.php"); 
+      }
+      elseif ($check == 2)
       {
           $_SESSION['signin'] = 1;
           $_SESSION['name'] = $_POST['name'];
@@ -87,8 +93,8 @@ $base = DatabaseFactory::getDatabase();
       }
       else
       {
-          $_SESSION['signin'] = 1;
-          $_SESSION['name'] = "ЗАЛУПА!";
+          $_SESSION['signinerror'] = "you entered incorrect password. Try again.";
+          $_SESSION['name'] = $_POST['name'];
           header('Location: ' . "index.php");
       }
   }

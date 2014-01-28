@@ -121,16 +121,23 @@ public function checkUser($name, $pass)
     $sql_query = "SELECT pass FROM `users` WHERE `name`='".$name."'";
     $query = mysql_query($sql_query);
     if(!$query) $this->showError("(MySQL) #".mysql_errno(), '<div>'.$sql_query.'</div>'.mysql_error());
-    $users = mysql_fetch_array($query);
     
-    if ($pass == $users['pass'])
+    $user = mysql_fetch_array($query);
+        
+    if ($user == "")
     {
-        return true;
+        $result = 1;
+    }
+    elseif ($pass == $user['pass'])
+    {
+        $result = 2;
     }
     else
     {
-        return false;
+        $result = 3;
     }
+    
+    return $result;
 }
 
 /* End of Check User function */
