@@ -43,12 +43,6 @@ elseif(isset($_SESSION['signin']) and isset($_SESSION['name']))
   unset($_SESSION['signin']);
 }
 
-elseif(isset($_SESSION['signinerror']) and isset($_SESSION['name']))
-{
-  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, '.$_SESSION['signinerror'].'</font><br>';
-  unset($_SESSION['signinerror']);
-  unset($_SESSION['name']);
-}
 
 ?>
 

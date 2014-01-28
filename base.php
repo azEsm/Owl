@@ -107,9 +107,23 @@ public function getList()
 
 public function addUser($name, $pass)
 {
-    $sql_query = "INSERT INTO `users` ( `name` , `pass` ) VALUES ( '".$name."', '".$pass."' );";
-    $query = mysql_query($sql_query);
-    if(!$query) $this->showError("(MySQL) #".mysql_errno(), '<div>'.$sql_query.'</div>'.mysql_error());
+    $sql_query_check = "SELECT name FROM `users` WHERE `name`='".$name."'";
+    $query_check = mysql_query($sql_query_check);
+    if(!$query_check) $this->showError("(MySQL) #".mysql_errno(), '<div>'.$sql_query_check.'</div>'.mysql_error());
+    
+    $user = mysql_fetch_array($query_check);
+    $result = 0;
+
+    if ($user == "")
+    {    
+        $sql_query = "INSERT INTO `users` ( `name` , `pass` ) VALUES ( '".$name."', '".$pass."' );";
+        $query = mysql_query($sql_query);
+        if(!$query) $this->showError("(MySQL) #".mysql_errno(), '<div>'.$sql_query.'</div>'.mysql_error());
+        
+        $result = 1;
+    }
+    
+    return $result;
 }
 
 /* End of Add User function */

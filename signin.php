@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+
 <html>
     <head>
     </head>
@@ -6,10 +7,11 @@
 
 <?php
 
-if(isset($_SESSION['signin']) and isset($_SESSION['name']))
+if(isset($_SESSION['registrationerror']) and isset($_SESSION['name']))
 {
-  echo '<font color="red">Hello, <b>'.$_SESSION['name'].'</b>! Nice to meet you!</font><br>';
-  unset($_SESSION['signin']);
+  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, '.$_SESSION['registrationerror'].'</font><br>';
+  unset($_SESSION['signinerror']);
+  unset($_SESSION['name']);
 }
 
 elseif(isset($_SESSION['signinerror']) and isset($_SESSION['name']))

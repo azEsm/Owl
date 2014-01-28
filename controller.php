@@ -68,10 +68,20 @@ $base = DatabaseFactory::getDatabase();
 /* Adding of user */
   elseif (isset($_POST['register']))
   {
-      $base->addUser($_POST['name'], md5(md5($_POST['pass'])));
-      $_SESSION['registered'] = 1;
-      $_SESSION['name'] = $_POST['name'];
-      header('Location: ' . "index.php");
+      $check = $base->addUser($_POST['name'], md5(md5($_POST['pass'])));
+      
+      if($check == 1)
+      {
+          $_SESSION['registered'] = 1;
+          $_SESSION['name'] = $_POST['name'];
+          header('Location: ' . "index.php");
+      }
+      else
+      {
+          $_SESSION['registrationerror'] = "this name is already in use";
+          $_SESSION['name'] = $_POST['name'];
+          header('Location: ' . "signin.php");
+      }
   }
 /* End of Adding of user */
 
