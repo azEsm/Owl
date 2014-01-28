@@ -117,16 +117,22 @@ public function addUser($name, $pass)
     if (strlen($name) < '4') 
     {
     
+        $result = 1;
+    }
+    
+    elseif (strlen($pass) < '6') 
+    {
+    
         $result = 2;
     }
 
     elseif ($user == "")
     {    
-        $sql_query = "INSERT INTO `users` ( `name` , `pass` ) VALUES ( '".$name."', '".$pass."' );";
+        $sql_query = "INSERT INTO `users` ( `name` , `pass` ) VALUES ( '".$name."', '".md5(md5($pass))."' );";
         $query = mysql_query($sql_query);
         if(!$query) $this->showError("(MySQL) #".mysql_errno(), '<div>'.$sql_query.'</div>'.mysql_error());
         
-        $result = 1;
+        $result = 3;
     }
     
     return $result;

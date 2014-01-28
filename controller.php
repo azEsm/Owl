@@ -68,26 +68,33 @@ $base = DatabaseFactory::getDatabase();
 /* Adding of user */
   elseif (isset($_POST['register']))
   {
-      $check = $base->addUser($_POST['name'], md5(md5($_POST['pass'])));
+      $check = $base->addUser($_POST['name'], $_POST['pass']);
       
       if($check == 1)
+      {
+          $_SESSION['registrationerror'] = "you name is too short. It should be more than 3 signs.";
+          $_SESSION['name'] = "Hey, Guy";
+          header('Location: ' . "signin.php");
+      }
+      elseif($check == 2)
+      {
+          $_SESSION['registrationerror'] = "you password is too short. It should 6 or more signs.";
+          $_SESSION['name'] = $_POST['name'];
+          header('Location: ' . "signin.php");
+      }
+      elseif($check == 3)
       {
           $_SESSION['registered'] = 1;
           $_SESSION['name'] = $_POST['name'];
           header('Location: ' . "index.php");
       }
-      elseif($check == 2)
-      {
-          $_SESSION['registrationerror'] = "you name is too short. It should be more than 3 signs.";
-          $_SESSION['name'] = "Hey, Guy";
-          header('Location: ' . "signin.php");
-      }     
       else
       {
           $_SESSION['registrationerror'] = "this name is already in use";
           $_SESSION['name'] = $_POST['name'];
           header('Location: ' . "signin.php");
       }
+
   }
 /* End of Adding of user */
 
