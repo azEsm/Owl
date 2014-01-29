@@ -125,6 +125,11 @@ public function addUser($name, $pass)
     
         $result = 2;
     }
+    
+    elseif(preg_match('/[^0-9a-zA-Z]/', $name))
+    {
+        $result = 3;
+    }
 
     elseif ($user == "")
     {    
@@ -132,7 +137,7 @@ public function addUser($name, $pass)
         $query = mysql_query($sql_query);
         if(!$query) $this->showError("(MySQL) #".mysql_errno(), '<div>'.$sql_query.'</div>'.mysql_error());
         
-        $result = 3;
+        $result = 4;
     }
     
     return $result;

@@ -72,17 +72,23 @@ $base = DatabaseFactory::getDatabase();
       
       if($check == 1)
       {
-          $_SESSION['registrationerror'] = "you name is too short. It should be more than 3 signs.";
+          $_SESSION['registrationerror'] = "your name is too short. It should be more than 3 signs.";
           $_SESSION['name'] = "Hey, Guy";
           header('Location: ' . "signin.php");
       }
       elseif($check == 2)
       {
-          $_SESSION['registrationerror'] = "you password is too short. It should 6 or more signs.";
+          $_SESSION['registrationerror'] = "your password is too short. It should 6 or more signs.";
           $_SESSION['name'] = $_POST['name'];
           header('Location: ' . "signin.php");
       }
       elseif($check == 3)
+      {
+          $_SESSION['registrationerror'] = "your name can consist of only english symbols and numbers.";
+          $_SESSION['name'] = "Hey, Guy";
+          header('Location: ' . "signin.php");
+      }
+      elseif($check == 4)
       {
           $_SESSION['registered'] = 1;
           $_SESSION['name'] = $_POST['name'];
