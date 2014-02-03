@@ -115,14 +115,12 @@ public function addUser($name, $pass)
     $result = 0;
 
     if (strlen($name) < '4') 
-    {
-    
+    {    
         $result = 1;
     }
     
     elseif (strlen($pass) < '6') 
-    {
-    
+    {    
         $result = 2;
     }
     

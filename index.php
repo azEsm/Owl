@@ -9,56 +9,67 @@ require_once("controller.php");
 
 <?php
 
-if (isset($_SESSION['added']) and isset($_SESSION['name']))
+if (isset($_SESSION['added']))
 {
   echo '<font color="red"><b>'.$_SESSION['name'].'</b>, your message has been successfully added. Be happy!</font><br>';
-  unset($_SESSION['add']);
-  unset($_SESSION['name']);
+  unset($_SESSION['added']);
 }
 
-elseif (isset($_SESSION['edit']) and isset($_SESSION['name']))
+elseif (isset($_SESSION['edit']))
 {
   echo '<font color="red"><b>'.$_SESSION['name'].'</b>, your message has been successfully edited. Be happy!</font><br>';
   unset($_SESSION['edit']);
-  unset($_SESSION['name']);
 }
 
-elseif (isset($_SESSION['delete']) and isset($_SESSION['name']))
+elseif (isset($_SESSION['delete']))
 {
   echo '<font color="red"><b>'.$_SESSION['name'].'</b>, your message has been successfully deleted. Be happy!</font><br>';
   unset($_SESSION['delete']);
-  unset($_SESSION['name']);
 }
 
-elseif(isset($_SESSION['registered']) and isset($_SESSION['name']))
+elseif(isset($_SESSION['registered']))
 {
   echo '<font color="red"><b>'.$_SESSION['name'].'</b>, you are successfully registered. Now you can Sign In.</font><br>';
   unset($_SESSION['registered']);
-  unset($_SESSION['name']);
 }
 
-elseif(isset($_SESSION['signin']) and isset($_SESSION['name']))
+elseif(isset($_SESSION['signin']))
 {
   echo '<font color="red">Hello, <b>'.$_SESSION['name'].'</b>! Nice to meet you!</font><br>';
   unset($_SESSION['signin']);
 }
 
 
+if(isset($_SESSION['auth']))
+{
+
 ?>
 
-<a href="signin.php" target="_self">Sign In</a><br><br>
+<a href="controller.php?signout=1" target="_self">Sign Out</a><br><br>
 
 <form action="edit.php" method="post">
 <input type="submit" name="add" value="Add message" />
 </form>
 
-<h2>Messages</h2><hr>
+<?php
+}
+else
+{
+?>
 
+<a href="signin.php" target="_self">Sign In</a><br><br>
 
 <?php
+}
 
 if (isset($mess) && empty($_SESSION['show']))
 {
+
+?>
+
+<h2>Messages</h2><hr>
+
+<?php
   foreach($mess as $id => $mess)
   {
 
@@ -72,16 +83,33 @@ echo '
 elseif(isset($_SESSION['show'])) {
 
 $mess = $base->getById($_GET['id']);
+?>
 
-echo '<form action="edit.php" method="post">
-<b>'.$mess['name'].'</b> is under <b>'.$mess['subject'].'</b><br>
-<p>'.nl2br($mess['message']).'</p>
-<input type="hidden" name="id" value="'.$mess['id'].'">
+<form action="edit.php" method="post">
+<hr>
+
+<b><?php echo $mess['name'];?></b> is under <b><?php echo $mess['subject'];?></b><br>
+<p><?php echo nl2br($mess['message']);?></p>
+<input type="hidden" name="id" value="<?php echo $mess['id'];?>">
+
+<?php
+
+if($_SESSION['name'] == $mess['name'])
+{
+
+?>
+
 <input type="submit" name="edit" value="I changed my mind">
 <input type="submit" name="delete" value="Delete"><br>
-<a href="index.php">Back to the primitive</a>
-<hr></form>';
 
+<?php
+}
+?>
+
+<a href="index.php">Back to the primitive</a>
+<hr></form>
+
+<?php
 unset($_SESSION['show']);
 unset($_SESSION['id']);
 

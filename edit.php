@@ -1,12 +1,16 @@
 <?php
   session_start();
-  require_once("controller.php");
-  if (isset($_SESSION['add'])){
+  
+  if (isset($_SESSION['auth'])) 
+  {
+  
+      require_once("controller.php");
+      if (isset($_SESSION['add'])){
 /* Форма для добавления записи */
 ?>
 <form action="edit.php" method="post">
 
-Name: <input type="text" name="name" /><br />
+Name: <input type="text" name="name" value="<?php echo $_SESSION['name']; ?>" disabled><br>
 
 <input type="hidden" name="send" >
 
@@ -15,23 +19,24 @@ Name: <input type="text" name="name" /><br />
 /* Конец формы для добавления записи */
 
 /* Форма для редактирования */
-elseif (isset($_SESSION['doedit']))
-{
+    elseif (isset($_SESSION['doedit']))
+    {
 
-unset($_SESSION['doedit']);?>
+        unset($_SESSION['doedit']);?>
 
 <form action="edit.php" method="post">
 
 <input type="hidden" name="update" >
-<input type="hidden" name="id" value="<?php echo $messages['id']?>">
-<input type="hidden" name="name" value="<?php echo $messages['name']?>">
-Name: <input type="text" name="name" value="<?php echo $messages['name']?>" disabled><br>
+<input type="hidden" name="id" value="<?php echo $messages['id']; ?>">
+<input type="hidden" name="name" value="<?php echo $messages['name']; ?>">
+
+Name: <input type="text" name="name" value="<?php echo $messages['name']; ?>" disabled><br>
 
 <?php
-}
+    }
 /* Конец формы для редактирования */
 
-else header('Location: ' . "index.php");//Для залётных
+    else header('Location: ' . "index.php");//Для залётных
 ?>
 
 Subject: <select name="subject">
@@ -49,3 +54,10 @@ Mesage: <textarea rows="5" cols="25" name="message" />
 
 <input type="submit" value="send" />
 </form>
+
+<?php
+  }
+  
+  else header('Location: ' . "index.php");
+
+?>

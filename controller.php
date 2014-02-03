@@ -117,6 +117,7 @@ $base = DatabaseFactory::getDatabase();
       elseif ($check == 2)
       {
           $_SESSION['signin'] = 1;
+          $_SESSION['auth'] = 1;
           $_SESSION['name'] = $_POST['name'];
           header('Location: ' . "index.php"); 
       }
@@ -127,7 +128,12 @@ $base = DatabaseFactory::getDatabase();
           header('Location: ' . "signin.php");
       }
   }
-/* End of Users check */ 
+/* End of Users check */
+  elseif (isset($_GET['signout']))
+  {
+      unset($_SESSION['auth']);
+      header('Location: ' . "index.php");
+  }
 
 /* Data for messages list */
   else
