@@ -89,6 +89,8 @@ $mess = $base->getById($_GET['id']);
 <hr>
 
 <b><?php echo $mess['name'];?></b> is under <b><?php echo $mess['subject'];?></b><br>
+<hr>
+
 <p><?php echo nl2br($mess['message']);?></p>
 <input type="hidden" name="id" value="<?php echo $mess['id'];?>">
 
