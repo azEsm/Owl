@@ -4,47 +4,48 @@ require_once("DatabaseFactory.php");
 
 $base = DatabaseFactory::getDatabase();
 
-  if(isset($_GET['id'])) {
+  if(isset($_GET['id'])) 
+  {
 	
-	$_SESSION['id'] = $_GET['id'];
-	$_SESSION['show'] = 1;
+    	$_SESSION['id'] = $_GET['id'];
+	    $_SESSION['show'] = 1;
   }
 
 /* For Deleting of message just in case */
   elseif (isset($_POST['add']))
   {
-		$_SESSION['add'] = 1;	  
+		  $_SESSION['add'] = 1;
   }
 /* End of For deleting of message  */
 
 /* Adding of message */
   elseif (isset($_POST['send']))
   {
-        $base->addMessage($_SESSION['name'], $_POST['subject'], $_POST['message']);
+      $base->addMessage($_SESSION['name'], $_POST['subject'], $_POST['message']);
 
 //	$_SESSION['name']=$_POST['name'];
-	$_SESSION['added'] = 1;	  
+	    $_SESSION['added'] = 1;	  
 
-	header('Location: ' . "index.php");  
+	    header('Location: ' . "index.php");  
   }
 /* End of Adding of message  */
 
 /* Data for Edit form */
   elseif (isset($_POST['edit']))
   {
-	$messages = $base->getById($_POST['id']);
+	    $messages = $base->getById($_POST['id']);
 
-	$_SESSION['doedit']=1;
+	    $_SESSION['doedit']=1;
   }
 /* End of Data for Edit form */
 
 /* Editing */  
   elseif (isset($_POST['update']))
   {
-        $base->updateMessage($_POST['id'], $_POST['subject'], $_POST['message']);
+      $base->updateMessage($_POST['id'], $_POST['subject'], $_POST['message']);
 
 //	$_SESSION['name']=$_POST['name'];
-	$_SESSION['edit']=1;
+	    $_SESSION['edit']=1;
 
 	header('Location: ' . "index.php");
   }
@@ -53,15 +54,15 @@ $base = DatabaseFactory::getDatabase();
 /* Deleting of message */
   elseif (isset($_POST['delete']))
   {
-        $messages = $base->getById($_POST['id']);
+      $messages = $base->getById($_POST['id']);
 
 //	$_SESSION['name']=$messages['name'];
 
-	$base->delete($_POST['id']);
+	    $base->delete($_POST['id']);
 
-	$_SESSION['delete']=1;
+	    $_SESSION['delete']=1;
 
-	header('Location: ' . "index.php");
+	    header('Location: ' . "index.php");
   }
 /* End of Deleting of message */
 
@@ -138,7 +139,7 @@ $base = DatabaseFactory::getDatabase();
 /* Data for messages list */
   else
   {
-    $mess = $base->getList();
+      $mess = $base->getList();
   }
 /* End of Data for messages list */
 

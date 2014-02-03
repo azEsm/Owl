@@ -4,9 +4,11 @@
   if(isset($_SESSION['auth']))
   {
       require_once("controller.php");
-      
-      if (isset($_SESSION['add'])){
-/* Форма для добавления записи */
+
+/* Форма для добавления записи */      
+      if (isset($_SESSION['add']))
+      {
+          unset($_SESSION['add']);
 ?>
 <form action="edit.php" method="post">
 

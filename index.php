@@ -57,7 +57,8 @@ else
 {
 ?>
 
-<a href="signin.php" target="_self">Sign In</a><br><br>
+<a href="signin.php" target="_self">Sign In</a> | 
+<a href="signin.php?reg=1" target="_self">Register</a><br><br>
 
 <?php
 }
