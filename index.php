@@ -9,43 +9,46 @@ require_once("controller.php");
 
 <?php
 
+if(isset($_SESSION['auth']))
+{
+
 if (isset($_SESSION['added']))
 {
-  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, your message has been successfully added. Be happy!</font><br>';
+  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, your message has been successfully added. Be happy!</font>';
   unset($_SESSION['added']);
 }
 
 elseif (isset($_SESSION['edit']))
 {
-  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, your message has been successfully edited. Be happy!</font><br>';
+  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, your message has been successfully edited. Be happy!</font>';
   unset($_SESSION['edit']);
 }
 
 elseif (isset($_SESSION['delete']))
 {
-  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, your message has been successfully deleted. Be happy!</font><br>';
+  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, your message has been successfully deleted. Be happy!</font>';
   unset($_SESSION['delete']);
 }
 
 elseif(isset($_SESSION['registered']))
 {
-  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, you are successfully registered. Now you can Sign In.</font><br>';
+  echo '<font color="red"><b>'.$_SESSION['name'].'</b>, you are successfully registered. Now you can Sign In.</font>';
   unset($_SESSION['registered']);
 }
 
 elseif(isset($_SESSION['signin']))
 {
-  echo '<font color="red">Hello, <b>'.$_SESSION['name'].'</b>! Nice to meet you!</font><br>';
+  echo '<font color="red">Hello, <b>'.$_SESSION['name'].'</b>! Nice to meet you!</font>';
   unset($_SESSION['signin']);
 }
-
-
-if(isset($_SESSION['auth']))
+else
 {
+  echo '<font color="red"><b>'.$_SESSION['name'].'</b></font>';
+}
 
 ?>
 
-<a href="controller.php?signout=1" target="_self">Sign Out</a><br><br>
+<br><a href="controller.php?signout=1" target="_self">Sign Out</a><br><br>
 
 <form action="edit.php" method="post">
 <input type="submit" name="add" value="Add message" />
