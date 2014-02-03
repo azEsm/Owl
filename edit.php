@@ -12,8 +12,6 @@
 ?>
 <form action="edit.php" method="post">
 
-Name: <input type="text" name="name" value="<?php echo $_SESSION['name']; ?>" disabled><br>
-
 <input type="hidden" name="send" >
 
 <?php
@@ -32,14 +30,14 @@ Name: <input type="text" name="name" value="<?php echo $_SESSION['name']; ?>" di
 <input type="hidden" name="id" value="<?php echo $messages['id']; ?>">
 <input type="hidden" name="name" value="<?php echo $messages['name']; ?>">
 
-Name: <input type="text" name="name" value="<?php echo $messages['name']; ?>" disabled><br>
-
 <?php
       }
 /* Конец формы для редактирования */
 
       else header('Location: ' . "index.php");//Для залётных
 ?>
+
+Name: <input type="text" name="name" value="<?php echo $_SESSION['name']; ?>" disabled><br>
 
 Subject: <select name="subject">
 <option><?php echo $messages['subject']?></option>
