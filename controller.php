@@ -66,19 +66,19 @@ $base = DatabaseFactory::getDatabase();
       {
           $_SESSION['registrationerror'] = "your name is too short. It should be more than 3 signs.";
           $_SESSION['name'] = "Hey, Guy";
-          header('Location: ' . "signin.php");
+          header('Location: ' . "signin.php?reg=1");
       }
       elseif($check == 2)
       {
           $_SESSION['registrationerror'] = "your password is too short. It should 6 or more signs.";
           $_SESSION['name'] = $_POST['name'];
-          header('Location: ' . "signin.php");
+          header('Location: ' . "signin.php?reg=1");
       }
       elseif($check == 3)
       {
           $_SESSION['registrationerror'] = "your name can consist of only english symbols and numbers.";
           $_SESSION['name'] = "Hey, Guy";
-          header('Location: ' . "signin.php");
+          header('Location: ' . "signin.php?reg=1");
       }
       elseif($check == 4)
       {
@@ -90,7 +90,7 @@ $base = DatabaseFactory::getDatabase();
       {
           $_SESSION['registrationerror'] = "this name is already in use";
           $_SESSION['name'] = $_POST['name'];
-          header('Location: ' . "signin.php");
+          header('Location: ' . "signin.php?reg=1");
       }
 
   }
@@ -104,7 +104,7 @@ $base = DatabaseFactory::getDatabase();
       {
           $_SESSION['signinerror'] = "you should register before sign in.";
           $_SESSION['name'] = $_POST['name'];
-          header('Location: ' . "signin.php"); 
+          header('Location: ' . "signin.php?reg=1"); 
       }
       elseif ($check == 2)
       {
