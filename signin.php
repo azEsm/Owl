@@ -5,6 +5,8 @@
     </head>
     <body>
 
+<a href="index.php" target="_self">Main Page</a><br><br>
+
 <?php
 
 if(isset($_SESSION['registrationerror']) and isset($_SESSION['name']))
