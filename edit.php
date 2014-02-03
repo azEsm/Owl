@@ -5,7 +5,7 @@
   {
       require_once("controller.php");
 
-/* Форма для добавления записи */      
+/* Форма для добавления записи */
       if (isset($_SESSION['add']))
       {
           unset($_SESSION['add']);
@@ -17,14 +17,14 @@ Name: <input type="text" name="name" value="<?php echo $_SESSION['name']; ?>" di
 <input type="hidden" name="send" >
 
 <?php
-}
+      }
 /* Конец формы для добавления записи */
 
 /* Форма для редактирования */
-    elseif (isset($_SESSION['doedit']))
-    {
+      elseif (isset($_SESSION['doedit']))
+      {
 
-        unset($_SESSION['doedit']);?>
+          unset($_SESSION['doedit']);?>
 
 <form action="edit.php" method="post">
 
@@ -35,10 +35,10 @@ Name: <input type="text" name="name" value="<?php echo $_SESSION['name']; ?>" di
 Name: <input type="text" name="name" value="<?php echo $messages['name']; ?>" disabled><br>
 
 <?php
-    }
+      }
 /* Конец формы для редактирования */
 
-    else header('Location: ' . "index.php");//Для залётных
+      else header('Location: ' . "index.php");//Для залётных
 ?>
 
 Subject: <select name="subject">
@@ -60,9 +60,9 @@ Mesage: <textarea rows="5" cols="25" name="message" />
 <?php
   }
   
-/*  else
+  else
   {
       header('Location: ' . "index.php");
   }
-*/
+
 ?>
