@@ -1,10 +1,10 @@
 <?php
   session_start();
   
-  if (isset($_SESSION['auth'])) 
+  if(isset($_SESSION['auth']))
   {
-  
       require_once("controller.php");
+      
       if (isset($_SESSION['add'])){
 /* Форма для добавления записи */
 ?>
@@ -58,6 +58,9 @@ Mesage: <textarea rows="5" cols="25" name="message" />
 <?php
   }
   
-  else header('Location: ' . "index.php");
-
+/*  else
+  {
+      header('Location: ' . "index.php");
+  }
+*/
 ?>

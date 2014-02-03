@@ -6,24 +6,24 @@ $base = DatabaseFactory::getDatabase();
 
   if(isset($_GET['id'])) {
 	
-	$_SESSION['id']=$_GET['id'];
-	$_SESSION['show']=1;
+	$_SESSION['id'] = $_GET['id'];
+	$_SESSION['show'] = 1;
   }
 
 /* For Deleting of message just in case */
   elseif (isset($_POST['add']))
   {
-		$_SESSION['add']=1;	  
+		$_SESSION['add'] = 1;	  
   }
 /* End of For deleting of message  */
 
 /* Adding of message */
   elseif (isset($_POST['send']))
   {
-        $base->addMessage($_POST['name'], $_POST['subject'], $_POST['message']);
+        $base->addMessage($_SESSION['name'], $_POST['subject'], $_POST['message']);
 
-	$_SESSION['name']=$_POST['name'];
-	$_SESSION['added']=1;	  
+//	$_SESSION['name']=$_POST['name'];
+	$_SESSION['added'] = 1;	  
 
 	header('Location: ' . "index.php");  
   }
@@ -43,7 +43,7 @@ $base = DatabaseFactory::getDatabase();
   {
         $base->updateMessage($_POST['id'], $_POST['subject'], $_POST['message']);
 
-	$_SESSION['name']=$_POST['name'];
+//	$_SESSION['name']=$_POST['name'];
 	$_SESSION['edit']=1;
 
 	header('Location: ' . "index.php");
@@ -55,7 +55,7 @@ $base = DatabaseFactory::getDatabase();
   {
         $messages = $base->getById($_POST['id']);
 
-	$_SESSION['name']=$messages['name'];
+//	$_SESSION['name']=$messages['name'];
 
 	$base->delete($_POST['id']);
 
