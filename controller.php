@@ -22,8 +22,6 @@ $base = DatabaseFactory::getDatabase();
   elseif (isset($_POST['send']))
   {
       $base->addMessage($_SESSION['name'], $_POST['subject'], $_POST['message']);
-
-//	$_SESSION['name']=$_POST['name'];
 	    $_SESSION['added'] = 1;	  
 
 	    header('Location: ' . "index.php");  
@@ -34,7 +32,6 @@ $base = DatabaseFactory::getDatabase();
   elseif (isset($_POST['edit']))
   {
 	    $messages = $base->getById($_POST['id']);
-
 	    $_SESSION['doedit']=1;
   }
 /* End of Data for Edit form */
@@ -43,11 +40,9 @@ $base = DatabaseFactory::getDatabase();
   elseif (isset($_POST['update']))
   {
       $base->updateMessage($_POST['id'], $_POST['subject'], $_POST['message']);
-
-//	$_SESSION['name']=$_POST['name'];
 	    $_SESSION['edit']=1;
 
-	header('Location: ' . "index.php");
+    	header('Location: ' . "index.php");
   }
 /* End of Editing */
 
@@ -55,11 +50,7 @@ $base = DatabaseFactory::getDatabase();
   elseif (isset($_POST['delete']))
   {
       $messages = $base->getById($_POST['id']);
-
-//	$_SESSION['name']=$messages['name'];
-
 	    $base->delete($_POST['id']);
-
 	    $_SESSION['delete']=1;
 
 	    header('Location: ' . "index.php");
