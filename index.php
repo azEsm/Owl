@@ -121,7 +121,8 @@ unset($_SESSION['id']);
 
 }
 
-else {
+else 
+{
   echo '<b>No messages. You can be first!</b><br>';
 }
 ?>

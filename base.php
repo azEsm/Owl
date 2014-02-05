@@ -130,8 +130,9 @@ public function addUser($name, $pass)
     }
 
     elseif ($user == "")
-    {    
-        $sql_query = "INSERT INTO `users` ( `name` , `pass` ) VALUES ( '".$name."', '".md5(md5($pass))."' );";
+    {
+        $passhash = hash('sha256', $pass);
+        $sql_query = "INSERT INTO `users` ( `name` , `pass` ) VALUES ( '".$name."', '".$passhash."' );";
         $query = mysql_query($sql_query);
         if(!$query) $this->showError("(MySQL) #".mysql_errno(), '<div>'.$sql_query.'</div>'.mysql_error());
         

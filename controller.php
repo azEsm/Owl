@@ -99,7 +99,8 @@ $base = DatabaseFactory::getDatabase();
 /* Users check */
   elseif (isset($_POST['signin']))
   {
-      $check = $base->checkUser($_POST['name'], md5(md5($_POST['pass'])));
+      $pass = hash('sha256', $_POST['pass']);
+      $check = $base->checkUser($_POST['name'], $pass);
       if ($check == 1)
       {
           $_SESSION['signinerror'] = "you should register before sign in.";
