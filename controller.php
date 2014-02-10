@@ -125,6 +125,7 @@ $base = DatabaseFactory::getDatabase();
   elseif (isset($_GET['signout']))
   {
       unset($_SESSION['auth']);
+      unset($_SESSION['name']);
       header('Location: ' . "index.php");
   }
 
